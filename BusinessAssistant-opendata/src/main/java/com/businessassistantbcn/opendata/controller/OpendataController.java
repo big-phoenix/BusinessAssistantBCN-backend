@@ -1,17 +1,29 @@
 package com.businessassistantbcn.opendata.controller;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.businessassistantbcn.opendata.service.CommercialGaleriesService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.annotations.*;
+
 
 @RestController
 @RequestMapping(value = "/v1/api/opendata")
 public class OpendataController {
 
-
+	
+	
+	@Autowired
+	CommercialGaleriesService commercialGaleries;
+	
+	@Autowired
+	private ObjectMapper objectMapper;
+	
+	
     @Autowired
     public OpendataController(){
     }
@@ -43,9 +55,17 @@ public class OpendataController {
     	@ApiResponse(code = 200, message = "OK"),
     	@ApiResponse(code = 404, message = "Not Found"),
     })
-    public String commercialGaleries() 
+    public ResponseEntity<Object> commercialGaleries()
     {
-        return "commercial-galeries";
+    	
+    	JSONObject jsonObject = commercialGaleries.getCommercialGaleriesAll();
+    	
+    	//String json = jsonObject.toString();
+    	
+    	//List<CommercialGaleriesRespondeDto> listcommercialGaleriesDTO = objectMapper.readValue(json, new TypeReference<List<CommercialGaleriesRespondeDto>>(){});
+
+        return new ResponseEntity<>(jsonObject.toMap(), HttpStatus.OK);
+        
     }
 
     //GET ?offset=0&limit=10
