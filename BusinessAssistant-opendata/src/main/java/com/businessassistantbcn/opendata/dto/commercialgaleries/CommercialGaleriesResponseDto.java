@@ -95,7 +95,4 @@ public class CommercialGaleriesRespondeDto {
 		this.province = province;
 	}
 	
-	
-    
-	
 }
