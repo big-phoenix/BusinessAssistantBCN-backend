@@ -1,19 +1,12 @@
 package com.businessassistantbcn.opendata.helper;
 
 import com.businessassistantbcn.opendata.config.PropertiesConfig;
-<<<<<<< HEAD
-import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResponseDto;
-import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResultDto;
-=======
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
->>>>>>> develop
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
-import io.swagger.v3.oas.models.media.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -95,18 +88,17 @@ public class HttpClientHelper {
     @SuppressWarnings("unchecked")
     public <T> Mono<T> getRequestData(URL url, Class clazz){
         WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = client.method(HttpMethod.GET);
-<<<<<<< HEAD
-        WebClient.RequestBodySpec bodySpec = uriSpec.uri(URI.create(config.getDs_test()));
+
+        //WebClient.RequestBodySpec bodySpec = uriSpec.uri(URI.create(config.getDs_test()));
         
         //response.subscribe( value -> System.out.println(value));
         //response.subscribe(System.out::println);
         //return bodySpec.retrieve().bodyToMono(String.class);
-=======
+
         WebClient.RequestBodySpec bodySpec = uriSpec.uri(URI.create(url.toString()));
->>>>>>> develop
+
         return bodySpec.retrieve().bodyToMono(clazz);
     }
-
 
 }
 
