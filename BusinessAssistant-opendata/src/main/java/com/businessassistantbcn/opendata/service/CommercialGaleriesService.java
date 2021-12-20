@@ -4,19 +4,66 @@ package com.businessassistantbcn.opendata.service;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResponseDto;
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResultDto;
+import com.businessassistantbcn.opendata.dto.test.StarWarsVehiclesResultDto;
+import com.businessassistantbcn.opendata.helper.HttpClientHelper;
+
+import io.swagger.v3.oas.models.media.MediaType;
+import reactor.core.publisher.Mono;
 
 
 
 @Service
-@ConfigurationProperties(prefix="datos")
 public class CommercialGaleriesService {
 	
+	@Autowired
+    HttpClientHelper helper;
+	
 	String url = "http://www.bcn.cat/tercerlloc/files/mercats-centrescomercials/opendatabcn_mercats-centrescomercials_galeries-comercials-js.json";
+	//String url = "https://api.github.com";
+	
+	public CommercialGaleriesResponseDto getCommercialGaleriesAll()
+	{
+		
+		/*RestTemplate restTemplate = new RestTemplate();
+		CommercialGaleriesResultDto response = restTemplate.getForObject(url, CommercialGaleriesResultDto.class);
+		*/
+		
+		RestTemplate restTemplate = new RestTemplate();
+		CommercialGaleriesResponseDto response = restTemplate.getForObject(url, CommercialGaleriesResponseDto.class);
+		
+		//JSONArray jsonArrayCommercialGalerie = new JSONArray(response);
+		//JSONObject jsonObjectCommercialGaleries = new JSONObject();
+		
+		
+    	/*WebClient.Builder webClient = WebClient.builder();
+		
+    	CommercialGaleriesResponseDto galeria = webClient.build()
+								    				.get()
+								    				.uri(url)
+								    				.retrieve()
+								    				.bodyToMono(CommercialGaleriesResponseDto.class)
+								    				.block();*/
+    	
+		
+		//jsonObjectCommercialGaleries.put("elements", jsonArrayCommercialGalerie);
+		System.out.println(response);
+		return response;
+	}
+	
+	/*public <T> Mono<T> getTestData(){
+        return helper.getCommercialGaleriesRequest(CommercialGaleriesResultDto.class);
+    }
+	
+	/*String url = "http://www.bcn.cat/tercerlloc/files/mercats-centrescomercials/opendatabcn_mercats-centrescomercials_galeries-comercials-js.json";
 	
 	public JSONObject getCommercialGaleriesAll()
 	{
@@ -92,7 +139,7 @@ public class CommercialGaleriesService {
     	jsonObjectCommercialGaleries.put("elements", jsonArrayCommercialGalerie);
 		
 		return jsonObjectCommercialGaleries;
-	}
+	}*/
 	
 	
 

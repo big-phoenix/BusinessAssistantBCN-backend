@@ -1,10 +1,14 @@
 package com.businessassistantbcn.opendata.helper;
 
 import com.businessassistantbcn.opendata.config.PropertiesConfig;
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResponseDto;
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResultDto;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import io.swagger.v3.oas.models.media.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
@@ -24,7 +28,7 @@ public class HttpClientHelper {
 
     private final PropertiesConfig config;
     HttpClient httpClient;
-    WebClient client;
+    public WebClient client;
 
     /**
      * Inicialización de objetos de conexión en constructor
@@ -70,7 +74,7 @@ public class HttpClientHelper {
     public <T> Mono<T> getTestRequest(Class clazz){
         WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = client.method(HttpMethod.GET);
         WebClient.RequestBodySpec bodySpec = uriSpec.uri(URI.create(config.getDs_test()));
-
+        
         //response.subscribe( value -> System.out.println(value));
         //response.subscribe(System.out::println);
         //return bodySpec.retrieve().bodyToMono(String.class);

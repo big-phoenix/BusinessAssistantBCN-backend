@@ -2,13 +2,23 @@ package com.businessassistantbcn.opendata.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResponseDto;
+import com.businessassistantbcn.opendata.dto.commercialgaleries.CommercialGaleriesResultDto;
+import com.businessassistantbcn.opendata.helper.HttpClientHelper;
 import com.businessassistantbcn.opendata.service.CommercialGaleriesService;
+import com.businessassistantbcn.opendata.service.TestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
+import org.json.JSONObject;
+
 import io.swagger.annotations.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -19,6 +29,17 @@ public class OpendataController {
 
     @Autowired
     TestService testService;
+    
+    @Autowired
+    HttpClientHelper helper;
+    
+    @Autowired
+	CommercialGaleriesService commercialGaleriesService;
+	
+	@Autowired
+	private ObjectMapper objectMapper;
+	
+	
 
     @GetMapping(value="/test")
     @ApiOperation("Get test")
@@ -56,8 +77,28 @@ public class OpendataController {
             @ApiResponse(code = 404, message = "Not Found"),
     })
 
-    public ResponseEntity<Object> commercialGaleries()
-    {}
+    /*public ResponseEntity<Object> commercialGaleries()
+    {
+    	//return testService.getTestData();
+    	
+    	
+    	JSONObject jsonObject = commercialGaleries.getCommercialGaleriesAll();
+    	
+    	//String json = jsonObject.toString();
+    	
+    	//List<CommercialGaleriesRespondeDto> listcommercialGaleriesDTO = objectMapper.readValue(json, new TypeReference<List<CommercialGaleriesRespondeDto>>(){});
+
+        return new ResponseEntity<>(jsonObject.toMap(), HttpStatus.OK);
+        
+    }*/
+    
+    public CommercialGaleriesResponseDto commercialGaleries()
+    {
+    	
+    	return commercialGaleriesService.getCommercialGaleriesAll();
+    	//return commercialGaleriesService.getTestData();
+        
+    }
     
     //GET ?offset=0&limit=10
     @GetMapping("/big-malls")

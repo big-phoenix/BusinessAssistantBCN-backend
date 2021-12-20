@@ -1,32 +1,91 @@
 package com.businessassistantbcn.opendata.dto.commercialgaleries;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
-//@JsonRootName(value = "elements")
-public class CommercialGaleriesRespondeDto {
-	
-	//private long count;
-	
-	private long register_id=0;
-	private String name="";
-	private String register_date="";
-	private String district_id="";
-	private String district_name="";
-	private int neighborhood_id=0;
-	private String neighborhood_name="";
-	private String address_name="";
-	private int start_street_number=0;
-	private String zip_code="";
-	private String town="";
-	private String province="";
+public class CommercialGaleriesResponseDto {
 	
 	
-	public long getRegister_id() {
+	/*public String current_user_url;
+	public String current_user_authorizations_html_url;
+	public String authorizations_url;
+	
+	public String getCurrent_user_url() {
+		return current_user_url;
+	}
+	public void setCurrent_user_url(String current_user_url) {
+		this.current_user_url = current_user_url;
+	}
+	public String getCurrent_user_authorizations_html_url() {
+		return current_user_authorizations_html_url;
+	}
+	public void setCurrent_user_authorizations_html_url(String current_user_authorizations_html_url) {
+		this.current_user_authorizations_html_url = current_user_authorizations_html_url;
+	}
+	public String getAuthorizations_url() {
+		return authorizations_url;
+	}
+	public void setAuthorizations_url(String authorizations_url) {
+		this.authorizations_url = authorizations_url;
+	}*/
+	
+	
+	//public long register_id;
+	//public String prefix;
+	//public String suffix;
+	public String name;
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+	/*public String created;
+	public String modified;
+	public String status;
+	public String status_name;
+	public String core_type;
+	public String core_type_name;
+	public String body;
+	public String tickets_data;*/
+	/*public List<AddressesDTO> addresses;
+	
+	public String register_date;
+	public String district_id="";
+	public String district_name="";
+	public int neighborhood_id=0;
+	public String neighborhood_name="";
+	public String address_name="";
+	public int start_street_number=0;
+	public String zip_code="";
+	public String town="";
+	public String province="";*/
+	
+	/*public long getRegister_id() {
 		return register_id;
 	}
 	public void setRegister_id(long register_id) {
 		this.register_id = register_id;
+	}
+	public String getPrefix() {
+		return prefix;
+	}
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+	public String getSuffix() {
+		return suffix;
+	}
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
 	}
 	public String getName() {
 		return name;
@@ -34,65 +93,58 @@ public class CommercialGaleriesRespondeDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getRegister_date() {
-		return register_date;
+	public String getCreated() {
+		return created;
 	}
-	public void setRegister_date(String register_date) {
-		this.register_date = register_date;
+	public void setCreated(String created) {
+		this.created = created;
 	}
-	public String getDistrict_id() {
-		return district_id;
+	public String getModified() {
+		return modified;
 	}
-	public void setDistrict_id(String district_id) {
-		this.district_id = district_id;
+	public void setModified(String modified) {
+		this.modified = modified;
 	}
-	public String getDistrict_name() {
-		return district_name;
+	public String getStatus() {
+		return status;
 	}
-	public void setDistrict_name(String district_name) {
-		this.district_name = district_name;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public int getNeighborhood_id() {
-		return neighborhood_id;
+	public String getStatus_name() {
+		return status_name;
 	}
-	public void setNeighborhood_id(int neighborhood_id) {
-		this.neighborhood_id = neighborhood_id;
+	public void setStatus_name(String status_name) {
+		this.status_name = status_name;
 	}
-	public String getNeighborhood_name() {
-		return neighborhood_name;
+	public String getCore_type() {
+		return core_type;
 	}
-	public void setNeighborhood_name(String neighborhood_name) {
-		this.neighborhood_name = neighborhood_name;
+	public void setCore_type(String core_type) {
+		this.core_type = core_type;
 	}
-	public String getAddress_name() {
-		return address_name;
+	public String getCore_type_name() {
+		return core_type_name;
 	}
-	public void setAddress_name(String address_name) {
-		this.address_name = address_name;
+	public void setCore_type_name(String core_type_name) {
+		this.core_type_name = core_type_name;
 	}
-	public int getStart_street_number() {
-		return start_street_number;
+	public String getBody() {
+		return body;
 	}
-	public void setStart_street_number(int start_street_number) {
-		this.start_street_number = start_street_number;
+	public void setBody(String body) {
+		this.body = body;
 	}
-	public String getZip_code() {
-		return zip_code;
+	public String getTickets_data() {
+		return tickets_data;
 	}
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
-	}
-	public String getTown() {
-		return town;
-	}
-	public void setTown(String town) {
-		this.town = town;
-	}
-	public String getProvince() {
-		return province;
-	}
-	public void setProvince(String province) {
-		this.province = province;
-	}
+	public void setTickets_data(String tickets_data) {
+		this.tickets_data = tickets_data;
+	}*/
+	
+	
+	
+	
+	
 	
 }
