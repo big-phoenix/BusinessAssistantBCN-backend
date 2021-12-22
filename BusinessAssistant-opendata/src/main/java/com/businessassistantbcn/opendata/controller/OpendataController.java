@@ -1,7 +1,9 @@
 package com.businessassistantbcn.opendata.controller;
 
 import com.businessassistantbcn.opendata.service.BigMallsService;
+import com.businessassistantbcn.opendata.service.CommercialGaleriesService;
 import com.businessassistantbcn.opendata.service.EconomicActivitiesCensusService;
+import com.businessassistantbcn.opendata.service.LargeStablishmentsService;
 import com.businessassistantbcn.opendata.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,12 @@ public class OpendataController {
     TestService testService;
     @Autowired
     EconomicActivitiesCensusService economicActivitiesCensusService;
+    
+    @Autowired
+    CommercialGaleriesService commercialGaleriesService;
+    
+    @Autowired
+    LargeStablishmentsService largeStablishmentsService;
 
     @GetMapping(value="/test")
     @ApiOperation("Get test")
