@@ -1,7 +1,9 @@
 package com.businessassistantbcn.opendata.helper;
 
+import java.util.Arrays;
 import java.util.List;
 
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Component
-public class JsonHelper {
+public class JsonHelper<T> {
 
 	private static ObjectMapper mapper;
 
@@ -51,5 +53,30 @@ public class JsonHelper {
 		}
 		return jsonString;
 	}
+	//Returns sub array starting from offset. if limit it's -1 it means there's no limit
+	public static  <T> T[] filterDto(T[] dto, int offset, int limit) throws Exception{
 
+		if(offset > dto.length-1){
+			throw new Exception("Result not found");
+		}
+		if(offset < 0){
+			throw new Exception("Offset Can not be negative");
+		}
+		int end = offset + limit;
+		//if limit == -1 it means that we should get all Data
+		if(limit == -1){
+			end = dto.length-1;
+		}
+		if(limit < -1){
+			throw new Exception("Limit value not accepted");
+		}
+		//If the ending point is out of bounce, we set the ending point in the last point of the array
+		if(end > dto.length-1){
+			end = dto.length - 1;
+		}
+		//Makes the subarray. The end point is excluded thats why we do +1.
+		T[] filteredDto = Arrays.copyOfRange(dto,offset,end+1);
+
+		return filteredDto;
+	}
 }
